@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>Teddies</h1>
+  <div class="row">
+    <% @teddies.each do |teddy| %>
+      <div class="col-6 col-md-4">
+        <div class="card">
+          <%= image_tag teddy.photo_url , class: "card-img-top" %>
+          <div class="card-body">
+            <h5 class="card-title"><%= teddy.name %></h5>
+            <p class="card-text"><%= teddy.category.name %></p>
+            <p>Amount: <%= humanized_money_with_symbol(teddy.price) %></p>
+            <%= link_to "More details", teddy_path(teddy), class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

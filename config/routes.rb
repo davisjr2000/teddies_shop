@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
+
+  # USERS
   devise_for :users
-  root to: 'pages#home'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # TEDDIES
+  root 'teddies#index'
+  resources :teddies, only: [:index, :show]
+
+  # ORDERS
+  resources :orders, only: [:show, :create] do
+    # PAYMENTS
+    resources :payments, only: [:new, :create]
+  end
 end
